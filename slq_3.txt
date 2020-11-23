@@ -1,0 +1,28 @@
+mysql> INSERT INTO school (name, country, capacity)
+    -> VALUES
+    -> ("Beauxbatons Academy of Magic"	,"France",	550),
+    -> ("Castelobruxo"	,"Brazil",	380),
+    -> ("Durmstrang Institute"	,"Norway",	570),
+    -> ("Hogwarts School of Witchcraft and Wizardry"	,"United Kingdom",	450),
+    -> ("Ilvermorny School of Witchcraft and Wizardry"	,"USA",	300),
+    -> ("Koldovstoretz"	,"Russia",	125),
+    -> ("Mahoutokoro School of Magic"	,"Japan",	800),
+    -> ("Uagadou School of Magic"	,"Uganda",	350);
+
+mysql> UPDATE school SET country = "Sweden" WHERE id = 3;
+
+mysql> UPDATE school SET capacity = 700 WHERE id = 7;
+
+mysql> DELETE FROM school WHERE name LIKE "%Magic%";
+
+mysql> select * from school;
++----+----------------------------------------------+----------+----------------+
+| id | name                                         | capacity | country        |
++----+----------------------------------------------+----------+----------------+
+|  2 | Castelobruxo                                 |      380 | Brazil         |
+|  3 | Durmstrang Institute                         |      570 | Sweden         |
+|  4 | Hogwarts School of Witchcraft and Wizardry   |      450 | United Kingdom |
+|  5 | Ilvermorny School of Witchcraft and Wizardry |      300 | USA            |
+|  6 | Koldovstoretz                                |      125 | Russia         |
++----+----------------------------------------------+----------+----------------+
+5 rows in set (0.00 sec)
