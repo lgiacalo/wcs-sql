@@ -1,0 +1,48 @@
+mysql> SELECT t.name, COUNT(team_id) as nb_players
+    -> FROM player
+    -> JOIN team t ON player.team_id = t.id
+    -> GROUP BY team_id
+    -> ORDER BY nb_players DESC;
++------------+------------+
+| name       | nb_players |
++------------+------------+
+| Gryffindor |         36 |
+| Slytherin  |         21 |
+| Ravenclaw  |         15 |
+| Hufflepuff |         12 |
++------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT t.name, COUNT(team_id) as nb_players
+    -> FROM player
+    -> JOIN team t ON player.team_id = t.id
+    -> GROUP BY team_id
+    -> HAVING nb_players >= 14
+    -> ORDER BY t.name;
++------------+------------+
+| name       | nb_players |
++------------+------------+
+| Gryffindor |         36 |
+| Ravenclaw  |         15 |
+| Slytherin  |         21 |
++------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT w.*
+    -> FROM player
+    -> JOIN wizard w ON player.wizard_id = w.id
+    -> JOIN team t ON player.team_id = t.id
+    -> WHERE t.name = 'Gryffindor'
+    -> AND DAYOFWEEK(enrollment_date) = 2;
++----+-----------+------------+
+| id | firstname | lastname   |
++----+-----------+------------+
+|  6 | Sirius    | Black      |
+| 20 | Aberforth | Dumbledore |
+| 30 | Godric    | Gryffindor |
+| 39 | Alice     | Longbottom |
+| 41 | Augusta   | Longbottom |
+| 82 | George    | Weasley    |
+| 90 | Cadogan   |            |
++----+-----------+------------+
+7 rows in set (0.00 sec)
